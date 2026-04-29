@@ -14,7 +14,7 @@ export default function Home() {
             </div>
             <div className="ps-1 mt-5 pt-5 text-md-start text-center">
                 <p className="myName fs-4 m-md-0">Hi, my name is...</p>
-                <h1 className="mt-2 nameH1">Hannah Hailu Muthoni</h1>
+                <h1 className="mt-2 nameH1">Muthoni Hailu</h1>
                 <p className="text-white mb-3 pe-md-5">
                     I am a software engineer specializing in MERN stack and Python web development. I am focused on AI integration into websites through Hugging Face inference ensuring that your business is ready for the age of Artificial Intelligence.
                 </p>
