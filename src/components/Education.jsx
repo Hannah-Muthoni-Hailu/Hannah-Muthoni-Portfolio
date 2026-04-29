@@ -10,12 +10,13 @@ export default function Education() {
             'studyDuration': '2022 October - current',
             'description': 'I am currently in my final year of study at the University of London pursuing a Bachelors Degree in Computer Science. Through my studies at the highly accredited university, I have developed skills in:',
             'skills': [
+                'Interaction Design (UI/UX Design)',
                 'Data Structures and Algorithms',
                 'Web Design and Development',
                 'Object Oriented Programming',
                 'Databases, Networks and the Web',
-                'Interaction Design',
                 'Computer Security',
+                'Agile Software Development',
                 'Programming in JavaScript and Python'
             ]
         },
