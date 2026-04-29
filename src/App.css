@@ -1,0 +1,148 @@
+body {
+  background: radial-gradient(#2b516d, #010232);
+}
+
+.downloadButton {
+  background-color: transparent;
+  border: 1px solid #7FE0F6;
+}
+
+.downloadButton:hover, .heroButton:hover {
+  background-color: #7FE0F6;
+  border: 1px solid #7FE0F6;
+  color: black;
+  border-radius: 15px;
+}
+
+.myName {
+  color: #7FE0F6;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  overflow: hidden;
+
+  /* Text typing animation */
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .1em;
+  width: 100%;
+
+  animation: 
+    typing 2s steps(13, end) forwards, 
+    blink-caret .75s step-end 5;
+
+  border-color: transparent; 
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.nameH1 {
+  font-family: "Platypi", serif;
+  font-weight: 400;
+}
+
+.blue-square {
+  width: 280px;
+  height: 280px;
+  background-color: #246D7D;
+  position: relative;
+  border-radius: 8px;
+}
+
+.overlay-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+
+  position: absolute;
+  left: -40px;
+  top: 40px;
+  z-index: 10;
+}
+
+.heroButton {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px dashed rgb(255, 255, 255);
+  border-radius: 0;
+}
+
+.sectionTitles {
+  font-family: "Pixelify Sans", sans-serif;
+  color: #7FE0F6;
+}
+
+.projectCard {
+  width: 75%;
+  position: relative;
+  border: 1px solid #7FE0F6;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .projectCard {
+    width: 30%;
+  }
+
+  .myName {
+    width: 45%;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 45% }
+  }
+}
+
+.projectImage {
+  width: 350px;
+  height: 200px;
+  border-radius: 8px;
+  /* object-fit: cover; */
+  transform: rotate(-10deg);
+  position: absolute;
+  right: -80px;
+  bottom: -120px;
+  z-index: 10;
+}
+
+.projectButton {
+  background-color: #7FE0F6;
+  border-color: #7FE0F6;
+  color: black;
+}
+
+.projectButton:hover {
+  background-color: transparent;
+  border-color: #7FE0F6;
+  color: white;
+}
+
+.modalContent {
+  background: radial-gradient(#2b516d, #1a1a2c);
+}
+
+.educationButton {
+  background-color: transparent;
+  border: none;
+  border-left: 3px solid #ffffff;
+  border-radius: 0;
+}
+
+.educationButton:hover, .educationButton:focus,  .educationButton:active {
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-left: 3px solid #7FE0F6;
+  color: #7FE0F6;
+}
