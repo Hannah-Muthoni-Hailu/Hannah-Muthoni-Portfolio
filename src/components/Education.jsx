@@ -36,6 +36,22 @@ export default function Education() {
             ],
             'certificate': 'https://coursera.org/share/f511f3a687a171fa29ee928fcc90991b'
         },
+        {
+            'typeOfStudy': 'IBM Data Science',
+            'schoolName': 'IBM Data Science by IBM on Coursera',
+            'qualification': 'Certification',
+            'studyDuration': '2023 October - 2024 February',
+            'description': 'I completed a professional certification developed by IBM that allowed me to develop skills in the data science pipeline including data management and visualization, model building, deployment, monitoring and assessment and Python skills for data science',
+            'skills': [
+                'Data Science Toolkit',
+                'Python programming for Data Science',
+                'Data Science Methodology',
+                'Databases and SQL',
+                'Data Visualization with Python',
+                'Machine Learning with Python',
+            ],
+            'certificate': 'https://coursera.org/share/e2cfbd47711e88034e560cf07ae84e36'
+        },
     ]
     const [content, setContent] = useState(education[0])
     return(
