@@ -5,6 +5,7 @@ import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import Spearmint from '../assets/Spearmint.png';
 import TextCopier from '../assets/TextCopier.png';
 import BotSasa from '../assets/BotSasa.png';
+import Mortgage from '../assets/Mortgage.png';
 
 export default function Projects() {
     const [modalContent, setModalContent] = useState({});
@@ -50,6 +51,18 @@ export default function Projects() {
             ],
             'github': 'https://github.com/Hannah-Muthoni-Hailu/BotSasa/tree/main',
             'url': 'https://botsasa-1.onrender.com/',
+        },
+        {
+            'img': Mortgage,
+            'name': 'LLoyd\'s Banking Group Mortgage Calculator',
+            'shortDesc': 'An intuitive mortgage calculator designed to suit both expert and new users.',
+            'longDesc': 'The LLoyd\'s Banking Group offered me an opportunity to work on improving an existing mortgage calculator as part of a job simulation through Forage. The calculator was optimized using insights drawn from user feedback, designed to be intuitive with different tracks for expert and novice users and developed with accessibility in mind. The optimization successfully improved user efficiency when caclulating mortgages determined through user studies.',
+            'techstack': [
+                'React (Vite)',
+                'Git Version Control',
+                'Figma',
+            ],
+            'github': 'https://github.com/Hannah-Muthoni-Hailu/lloyds-bank-mortgage-calculator',
         },
     ]
 
