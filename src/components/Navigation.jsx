@@ -18,7 +18,7 @@ export default function Navigation() {
                         {/* <Nav.Link href="#skills" className="text-white mx-2">Skills</Nav.Link> */}
                         <Nav.Link href="#contact" className="text-white mx-3">Contact</Nav.Link>
                         <Button className="d-flex align-items-center px-3 text-nowrap downloadButton">
-                            <a href="https://docs.google.com/document/d/1StudyXNgMrUZbW-P1EX_mfyQgQ3UoCk_/edit?usp=sharing&ouid=115064769298718409451&rtpof=true&sd=true" className="text-decoration-none text-white">View CV <FontAwesomeIcon icon={faDownload}/></a>
+                            <a href="https://docs.google.com/document/d/1V5Q69KIT-aDfSocBz0A7b3mnfhjpPJhbpFc5rMFkSbI/edit?usp=sharing" className="text-decoration-none text-white">View CV <FontAwesomeIcon icon={faDownload}/></a>
                         </Button>
                     </Nav>
                 </Navbar.Collapse>
