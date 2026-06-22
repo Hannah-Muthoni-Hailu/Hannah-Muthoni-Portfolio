@@ -6,6 +6,7 @@ import Spearmint from '../assets/Spearmint.png';
 import TextCopier from '../assets/TextCopier.png';
 import BotSasa from '../assets/BotSasa.png';
 import Mortgage from '../assets/Mortgage.png';
+import MobileMuuzaji from '../assets/MobileMuuzaji.png';
 
 export default function Projects() {
     const [modalContent, setModalContent] = useState({});
@@ -63,6 +64,20 @@ export default function Projects() {
                 'Figma',
             ],
             'github': 'https://github.com/Hannah-Muthoni-Hailu/lloyds-bank-mortgage-calculator',
+        },
+        {
+            'img': MobileMuuzaji,
+            'name': 'MobileMuuzaji - Mobile PoS system',
+            'shortDesc': 'A simple PoS terminal that can be used on mobile to track profits and sales',
+            'longDesc': 'MobileMuuzaji is a passion project I built for my mothers small business. It is designed to specifically address challenges that small entreprenuers in Kenya, like her, face. Specifically, it allows sales and profits to be logged and calculated quickly, better fitting the fast paced landscape of running a small business in the country. It also allows for employee management, ensuring data is consolidated across the organization. In addition to that, it offers an easy way to sort and group data allowing for data-driven decision making.',
+            'techstack': [
+                'Kotlin',
+                'Python (FastAPI)',
+                'Android Mobile Development',
+                'Git Version Control',
+                'Figma',
+            ],
+            'github': 'https://github.com/Hannah-Muthoni-Hailu/MobileMuuzaji',
         },
     ]
 
