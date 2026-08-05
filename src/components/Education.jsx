@@ -7,8 +7,8 @@ export default function Education() {
             'typeOfStudy': 'Bachelors',
             'schoolName': 'University of London',
             'qualification': 'BSc Computer Science',
-            'studyDuration': '2022 October - current',
-            'description': 'I am currently in my final year of study at the University of London pursuing a Bachelors Degree in Computer Science. Through my studies at the highly accredited university, I have developed skills in:',
+            'studyDuration': '2022 October - 2026 May',
+            'description': 'Computer Science graduate from the University of London with a Second Class (Upper Division) qualification. Through my studies at the highly accredited university, I have developed skills in:',
             'skills': [
                 'Interaction Design (UI/UX Design)',
                 'Data Structures and Algorithms',
