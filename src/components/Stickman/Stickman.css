@@ -215,7 +215,7 @@
 .stickman-line {
   fill: none;
 
-  stroke: #111827;
+  stroke: #A855F7;
   stroke-width: 5;
 
   stroke-linecap: round;
@@ -522,5 +522,331 @@
   .stickman-dismiss,
   .stickman-placeholder-options button {
     transition: none !important;
+  }
+}
+
+/* --------------------------------
+   Chatbot overlay
+--------------------------------- */
+
+.stickman-chat-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+}
+
+/* --------------------------------
+   Chatbot pane
+--------------------------------- */
+
+.stickman-chat {
+  width: min(440px, calc(100vw - 2rem));
+  height: min(650px, calc(100vh - 4rem));
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(199, 255, 50, 0.3);
+  border-radius: 24px;
+
+  background: #0d100c;
+  color: #fff;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    0 0 50px rgba(199, 255, 50, 0.08);
+
+  animation: stickman-chat-in 400ms
+    cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+@keyframes stickman-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------
+   Header
+--------------------------------- */
+
+.stickman-chat-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 1.5rem;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stickman-chat-header h2 {
+  margin: 0.5rem 0 0;
+
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.stickman-chat-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-family: system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.stickman-chat-status span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #c7ff32;
+
+  box-shadow: 0 0 10px rgba(199, 255, 50, 0.8);
+}
+
+.stickman-chat-close {
+  display: grid;
+  width: 34px;
+  height: 34px;
+
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 1.3rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.stickman-chat-close:hover {
+  border-color: #c7ff32;
+  background: #c7ff32;
+  color: #090b08;
+}
+
+/* --------------------------------
+   Messages
+--------------------------------- */
+
+.stickman-chat-messages {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  overflow-y: auto;
+
+  padding: 1.5rem;
+}
+
+.stickman-message {
+  max-width: 85%;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 16px;
+
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.stickman-message-assistant {
+  align-self: flex-start;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 4px;
+
+  background: #171b15;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stickman-message-user {
+  align-self: flex-end;
+
+  border-bottom-right-radius: 4px;
+
+  background: #c7ff32;
+  color: #090b08;
+}
+
+/* Typing indicator */
+
+.stickman-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  width: fit-content;
+}
+
+.stickman-typing span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  animation: stickman-typing 1.2s infinite ease-in-out;
+}
+
+.stickman-typing span:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.stickman-typing span:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes stickman-typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* --------------------------------
+   Input
+--------------------------------- */
+
+.stickman-chat-form {
+  display: flex;
+  gap: 0.6rem;
+
+  margin: 0 1rem 1rem;
+  padding: 0.4rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+
+  background: #151914;
+}
+
+.stickman-chat-form input {
+  min-width: 0;
+  flex: 1;
+
+  border: 0;
+  outline: 0;
+
+  padding: 0.7rem 0.8rem;
+
+  background: transparent;
+  color: #fff;
+
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+}
+
+.stickman-chat-form input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.stickman-chat-form button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+  place-items: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #c7ff32;
+  color: #090b08;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.stickman-chat-form button:hover:not(:disabled) {
+  transform: translate(2px, -2px);
+}
+
+.stickman-chat-form button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* --------------------------------
+   Mobile
+--------------------------------- */
+
+@media (max-width: 767.98px) {
+  .stickman-chat-overlay {
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 0.75rem;
+  }
+
+  .stickman-chat {
+    width: 100%;
+    height: min(650px, calc(100vh - 1.5rem));
+
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stickman-chat {
+    animation: none;
+  }
+
+  .stickman-typing span {
+    animation: none;
   }
 }

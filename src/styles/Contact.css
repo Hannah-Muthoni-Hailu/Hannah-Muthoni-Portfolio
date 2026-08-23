@@ -1,0 +1,258 @@
+.contact-section {
+  --lime: #c7ff32;
+  --bg: #090b08;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.42);
+  --hairline: rgba(255, 255, 255, 0.15);
+
+  position: relative;
+  overflow: hidden;
+
+  min-height: 100vh;
+  padding: 8rem 0 2rem;
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* --------------------------------
+   Header
+--------------------------------- */
+
+.contact-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.contact-eyebrow,
+.contact-number {
+  font-family: system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+/* --------------------------------
+   Main layout
+--------------------------------- */
+
+.contact-main {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(3rem, 8vw, 10rem);
+
+  align-items: center;
+
+  min-height: 70vh;
+}
+
+.contact-heading {
+  margin: 0;
+
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(7rem, 18vw, 18rem);
+  font-weight: 500;
+  line-height: 0.72;
+  letter-spacing: -0.075em;
+}
+
+.contact-heading span {
+  padding-left: clamp(2rem, 8vw, 8rem);
+
+  color: var(--lime);
+  font-style: italic;
+}
+
+/* --------------------------------
+   Contact links
+--------------------------------- */
+
+.contact-links {
+  border-top: 1px solid var(--hairline);
+}
+
+.contact-link {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 2rem 7rem 1fr 2rem;
+  align-items: center;
+  gap: 1rem;
+
+  min-height: 5.5rem;
+  padding: 1rem 0;
+
+  border-bottom: 1px solid var(--hairline);
+
+  color: var(--text);
+  text-decoration: none;
+
+  transition:
+    color 250ms ease,
+    padding 300ms cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+.contact-link::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: var(--lime);
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 350ms cubic-bezier(0.2, 0.65, 0.25, 1);
+
+  z-index: -1;
+}
+
+.contact-link:hover {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  color: #090b08;
+}
+
+.contact-link:hover::before {
+  transform: scaleX(1);
+}
+
+.contact-link-index {
+  font-family: system-ui, sans-serif;
+  font-size: 0.65rem;
+
+  opacity: 0.45;
+}
+
+.contact-link-label {
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-link-value {
+  overflow: hidden;
+
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.contact-link-arrow {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+
+  transition: transform 250ms ease;
+}
+
+.contact-link:hover .contact-link-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* --------------------------------
+   Footer
+--------------------------------- */
+
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  padding-top: 1.5rem;
+
+  font-family: system-ui, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+/* --------------------------------
+   Responsive
+--------------------------------- */
+
+@media (max-width: 991.98px) {
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+
+    padding: 5rem 0;
+  }
+
+  .contact-heading {
+    font-size: clamp(6rem, 18vw, 12rem);
+  }
+
+  .contact-links {
+    width: min(100%, 700px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contact-section {
+    min-height: auto;
+    padding: 5rem 0 1.5rem;
+  }
+
+  .contact-main {
+    gap: 4rem;
+    min-height: auto;
+    padding: 4rem 0 5rem;
+  }
+
+  .contact-heading {
+    font-size: clamp(5.5rem, 25vw, 9rem);
+  }
+
+  .contact-heading span {
+    padding-left: 1.5rem;
+  }
+
+  .contact-link {
+    grid-template-columns: 1.5rem 1fr 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .contact-link-value {
+    grid-column: 2;
+    grid-row: 2;
+
+    font-size: 1rem;
+  }
+
+  .contact-link-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .contact-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-link,
+  .contact-link::before,
+  .contact-link-arrow {
+    transition: none;
+  }
+
+  .contact-link:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -5,6 +5,12 @@ import "./Stickman.css";
 const INITIAL_MESSAGE =
   "Pssst...want your site to do more than just sit there?";
 
+const CHATBOT_GREETING =
+  "So, you want to improve your website? What do you specifically have in mind?";
+
+const API_URL = "https://your-api-endpoint.com/chat";
+const API_KEY = "YOUR_API_KEY";
+
 export default function StickMan() {
   const {
     isVisible,
@@ -16,7 +22,19 @@ export default function StickMan() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      role: "assistant",
+      content: CHATBOT_GREETING,
+    },
+  ]);
+
+  const [input, setInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
   const characterRef = useRef(null);
+  const inputRef = useRef(null);
 
   // Don't render anything if the user dismissed it.
   useEffect(() => {
@@ -24,6 +42,15 @@ export default function StickMan() {
       setIsDismissed(true);
     }
   }, []);
+
+  // Focus the input when the chatbot opens.
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isOpen]);
 
   const handleDismiss = (event) => {
     event.stopPropagation();
@@ -37,8 +64,85 @@ export default function StickMan() {
     setIsOpen(true);
   };
 
-  const handleClosePlaceholder = () => {
+  const handleClose = () => {
     setIsOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const text = input.trim();
+
+    if (!text || isSending) {
+      return;
+    }
+
+    // Add the user's message immediately.
+    const userMessage = {
+      id: Date.now(),
+      role: "user",
+      content: text,
+    };
+
+    setMessages((current) => [...current, userMessage]);
+    setInput("");
+    setIsSending(true);
+
+    try {
+      // const response = await fetch(API_URL, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     text,
+      //     apikey: API_KEY,
+      //   }),
+      // });
+
+      // if (!response.ok) {
+      //   throw new Error(`API request failed: ${response.status}`);
+      // }
+
+      // const data = await response.json();
+      const data = {
+        response: "Thank you for your input"
+      }
+
+      // Adjust this depending on your real API response.
+      const assistantText =
+        data.response ||
+        data.message ||
+        data.text ||
+        "Thanks — I've received your message.";
+
+      setMessages((current) => [
+        ...current,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          content: assistantText,
+        },
+      ]);
+    } catch (error) {
+      console.error("Chatbot request failed:", error);
+
+      setMessages((current) => [
+        ...current,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          content:
+            "Hmm, I couldn't reach the assistant right now. Try again in a moment.",
+        },
+      ]);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   if (isDismissed || !isVisible) {
@@ -48,7 +152,9 @@ export default function StickMan() {
   return (
     <>
       <div
-        className={`stickman-wrapper ${isSmiling ? "is-smiling" : ""}`}
+        className={`stickman-wrapper ${
+          isSmiling ? "is-smiling" : ""
+        }`}
         onMouseMove={handleMouseMove}
       >
         {/* Speech bubble */}
@@ -74,7 +180,7 @@ export default function StickMan() {
           </div>
         )}
 
-        {/* Stick man */}
+        {/* Stickman */}
         <button
           ref={characterRef}
           className="stickman-character"
@@ -87,7 +193,6 @@ export default function StickMan() {
             viewBox="0 0 120 190"
             aria-hidden="true"
           >
-            {/* Head */}
             <circle
               className="stickman-head"
               cx="60"
@@ -95,7 +200,6 @@ export default function StickMan() {
               r="31"
             />
 
-            {/* Eyes */}
             <g className="stickman-eyes">
               <circle
                 className="stickman-eye"
@@ -103,6 +207,7 @@ export default function StickMan() {
                 cy="43"
                 r="7"
               />
+
               <circle
                 className="stickman-eye"
                 cx="71"
@@ -110,7 +215,6 @@ export default function StickMan() {
                 r="7"
               />
 
-              {/* Pupils */}
               <circle
                 className="stickman-pupil"
                 cx={49 + eyePosition.x}
@@ -126,7 +230,6 @@ export default function StickMan() {
               />
             </g>
 
-            {/* Mouth */}
             {isSmiling ? (
               <path
                 className="stickman-mouth smile"
@@ -139,7 +242,6 @@ export default function StickMan() {
               />
             )}
 
-            {/* Body */}
             <line
               className="stickman-line"
               x1="60"
@@ -148,7 +250,6 @@ export default function StickMan() {
               y2="137"
             />
 
-            {/* Left arm */}
             <line
               className="stickman-line"
               x1="60"
@@ -157,7 +258,6 @@ export default function StickMan() {
               y2="113"
             />
 
-            {/* Waving arm */}
             <g className="stickman-wave-arm">
               <line
                 className="stickman-line"
@@ -167,7 +267,6 @@ export default function StickMan() {
                 y2="73"
               />
 
-              {/* Hand */}
               <line
                 className="stickman-line"
                 x1="91"
@@ -175,6 +274,7 @@ export default function StickMan() {
                 x2="96"
                 y2="62"
               />
+
               <line
                 className="stickman-line"
                 x1="91"
@@ -184,7 +284,6 @@ export default function StickMan() {
               />
             </g>
 
-            {/* Legs */}
             <line
               className="stickman-line"
               x1="60"
@@ -204,52 +303,89 @@ export default function StickMan() {
         </button>
       </div>
 
-      {/* Placeholder for your future chatbot/service interaction */}
+      {/* Chatbot */}
       {isOpen && (
-        <div className="stickman-overlay">
+        <div
+          className="stickman-chat-overlay"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              handleClose();
+            }
+          }}
+        >
           <div
-            className="stickman-modal"
+            className="stickman-chat"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="stickman-modal-title"
+            aria-labelledby="stickman-chat-title"
           >
-            <button
-              className="stickman-modal-close"
-              onClick={handleClosePlaceholder}
-              aria-label="Close"
-              type="button"
-            >
-              ×
-            </button>
+            <div className="stickman-chat-header">
+              <div>
+                <span className="stickman-chat-status">
+                  <span />
+                  Online
+                </span>
 
-            <div className="stickman-modal-icon">🤖</div>
+                <h2 id="stickman-chat-title">
+                  Let's improve it.
+                </h2>
+              </div>
 
-            <h2 id="stickman-modal-title">
-              Chatbot / Service Placeholder
-            </h2>
-
-            <p>
-              This is where your AI chatbot, service selector,
-              contact form, or booking flow can open.
-            </p>
-
-            <div className="stickman-placeholder-options">
-              <button type="button">
-                AI-powered website
-              </button>
-
-              <button type="button">
-                Custom AI chatbot
-              </button>
-
-              <button type="button">
-                Website redesign
-              </button>
-
-              <button type="button">
-                Something else
+              <button
+                className="stickman-chat-close"
+                onClick={handleClose}
+                aria-label="Close chatbot"
+                type="button"
+              >
+                ×
               </button>
             </div>
+
+            <div className="stickman-chat-messages">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`stickman-message ${
+                    message.role === "user"
+                      ? "stickman-message-user"
+                      : "stickman-message-assistant"
+                  }`}
+                >
+                  {message.content}
+                </div>
+              ))}
+
+              {isSending && (
+                <div className="stickman-message stickman-message-assistant stickman-typing">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              )}
+            </div>
+
+            <form
+              className="stickman-chat-form"
+              onSubmit={handleSubmit}
+            >
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Tell me what you're thinking..."
+                disabled={isSending}
+                aria-label="Your message"
+              />
+
+              <button
+                type="submit"
+                disabled={!input.trim() || isSending}
+                aria-label="Send message"
+              >
+                ↗
+              </button>
+            </form>
           </div>
         </div>
       )}
