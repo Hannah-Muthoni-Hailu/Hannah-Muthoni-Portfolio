@@ -131,15 +131,15 @@ export default function About() {
           {/* Content */}
           <div className="about-content">
             <p className="about-copy">
-              I’m Hannah — a multidisciplinary creative developer and
-              designer focused on building thoughtful identities,
-              digital experiences, and visual systems.
+              I’m <span>Muthoni</span> — a multidisciplinary creative developer and
+              designer.
             </p>
 
             <p className="about-copy about-copy-muted">
-              I like the space between strategy and expression: finding
-              the idea, giving it a visual language, and turning it into
-              something people can actually experience.
+              My main focus is converting your vision into an intuitive and responsive website
+              with AI integration and SEO optimization. I make sure that your site doesn't just
+              become another site on the web. Instead, your site will directly address your customer's
+              needs and get above your competition.
             </p>
 
             <div className="skills">

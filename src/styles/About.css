@@ -194,6 +194,11 @@
   letter-spacing: -0.035em;
 }
 
+.about-copy span{
+  color: var(--lime);
+  font-style: italic;
+}
+
 .about-copy-muted {
   margin-top: 2rem;
 
