@@ -18,10 +18,10 @@ export default function Home() {
                 <p className="text-white mb-3 pe-md-5">
                     I am a software engineer specializing in MERN stack and Python web development. I am focused on AI integration into websites through Hugging Face inference ensuring that your business is ready for the age of Artificial Intelligence.
                 </p>
-                <Button className="mx-2 px-0 heroButton mb-2">
+                <Button className="mx-2 px-3 heroButton mb-2">
                     <a href="#contact" className="text-decoration-none text-white">Work with me <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
                 </Button>
-                <Button className="mx-2 px-0 heroButton mb-2">
+                <Button className="mx-2 px-3 heroButton mb-2">
                     <a href="#projects" className="text-decoration-none text-white">See my work <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
                 </Button>
             </div>

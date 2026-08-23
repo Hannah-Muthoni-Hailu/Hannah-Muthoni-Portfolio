@@ -1,0 +1,526 @@
+/* =========================================
+   Main container
+========================================= */
+
+.stickman-wrapper {
+  position: fixed;
+  right: 28px;
+  bottom: 24px;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  animation: stickman-enter 700ms
+    cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* =========================================
+   Speech bubble
+========================================= */
+
+.stickman-bubble {
+  position: relative;
+
+  width: min(300px, calc(100vw - 40px));
+  margin-bottom: -4px;
+  margin-right: 38px;
+
+  background: white;
+  color: #111827;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.16),
+    0 3px 10px rgba(0, 0, 0, 0.08);
+
+  animation: bubble-enter 500ms
+    cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+}
+
+/* Bubble tail */
+
+.stickman-bubble::after {
+  content: "";
+
+  position: absolute;
+  right: 35px;
+  bottom: -13px;
+
+  width: 24px;
+  height: 24px;
+
+  background: white;
+
+  transform: rotate(45deg);
+
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   Bubble content
+========================================= */
+
+.stickman-bubble-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  width: 100%;
+
+  padding: 20px 22px;
+
+  border: 0;
+  border-radius: inherit;
+
+  background: transparent;
+
+  color: inherit;
+
+  text-align: left;
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.stickman-bubble-content:hover {
+  transform: translateY(-2px);
+}
+
+.stickman-bubble-content span {
+  padding-right: 18px;
+
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.stickman-bubble-content small {
+  color: #6366f1;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================
+   Dismiss X
+========================================= */
+
+.stickman-dismiss {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+
+  z-index: 5;
+
+  width: 24px;
+  height: 24px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.06);
+
+  color: #6b7280;
+
+  font-size: 16px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.stickman-dismiss:hover {
+  background: rgba(0, 0, 0, 0.12);
+  color: #111827;
+  transform: scale(1.1);
+}
+
+/* =========================================
+   Stickman
+========================================= */
+
+.stickman-character {
+  width: 120px;
+  height: 190px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  transform-origin: bottom center;
+
+  animation:
+    stickman-enter 700ms
+      cubic-bezier(0.16, 1, 0.3, 1) both,
+    stickman-float 4s ease-in-out 1.5s infinite;
+}
+
+.stickman-character:hover {
+  transform: scale(1.04);
+}
+
+/* =========================================
+   SVG
+========================================= */
+
+.stickman-svg {
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.stickman-head {
+  fill: #ffffff;
+  stroke: #111827;
+  stroke-width: 4;
+}
+
+.stickman-eye {
+  fill: #ffffff;
+  stroke: #111827;
+  stroke-width: 2;
+}
+
+.stickman-pupil {
+  fill: #111827;
+
+  transition:
+    cx 80ms ease-out,
+    cy 80ms ease-out;
+}
+
+.stickman-line {
+  fill: none;
+
+  stroke: #111827;
+  stroke-width: 5;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stickman-mouth {
+  fill: none;
+
+  stroke: #111827;
+  stroke-width: 2.5;
+
+  stroke-linecap: round;
+
+  transition: d 180ms ease;
+}
+
+.stickman-mouth.smile {
+  stroke-width: 3;
+}
+
+/* =========================================
+   Waving animation
+========================================= */
+
+.stickman-wave-arm {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+
+  animation: stickman-wave 900ms
+    ease-in-out 700ms 3;
+}
+
+/* =========================================
+   Modal / chatbot placeholder
+========================================= */
+
+.stickman-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 10000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  backdrop-filter: blur(5px);
+
+  animation: overlay-enter 200ms ease both;
+}
+
+.stickman-modal {
+  position: relative;
+
+  width: min(460px, 100%);
+
+  padding: 36px;
+
+  border-radius: 24px;
+
+  background: white;
+  color: #111827;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+
+  animation: modal-enter 350ms
+    cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stickman-modal-icon {
+  display: grid;
+  place-items: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 18px;
+
+  background: #eef2ff;
+
+  font-size: 30px;
+}
+
+.stickman-modal h2 {
+  margin: 0 0 10px;
+
+  font-size: 24px;
+}
+
+.stickman-modal p {
+  margin: 0 auto 24px;
+
+  max-width: 380px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.stickman-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #6b7280;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.stickman-modal-close:hover {
+  background: #e5e7eb;
+}
+
+/* =========================================
+   Placeholder service options
+========================================= */
+
+.stickman-placeholder-options {
+  display: grid;
+  gap: 10px;
+}
+
+.stickman-placeholder-options button {
+  width: 100%;
+
+  padding: 13px 16px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #f9fafb;
+
+  color: #111827;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.stickman-placeholder-options button:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   Animations
+========================================= */
+
+@keyframes stickman-enter {
+  from {
+    opacity: 0;
+    transform: translateY(130px) scale(0.85);
+  }
+
+  70% {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bubble-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stickman-wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-22deg);
+  }
+
+  50% {
+    transform: rotate(18deg);
+  }
+
+  75% {
+    transform: rotate(-14deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes stickman-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes overlay-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 600px) {
+  .stickman-wrapper {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .stickman-bubble {
+    width: min(280px, calc(100vw - 28px));
+    margin-right: 20px;
+  }
+
+  .stickman-character {
+    width: 90px;
+    height: 143px;
+  }
+
+  .stickman-modal {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+}
+
+/* =========================================
+   Reduced motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .stickman-wrapper,
+  .stickman-character,
+  .stickman-bubble,
+  .stickman-wave-arm,
+  .stickman-overlay,
+  .stickman-modal {
+    animation: none !important;
+  }
+
+  .stickman-pupil,
+  .stickman-bubble-content,
+  .stickman-character,
+  .stickman-dismiss,
+  .stickman-placeholder-options button {
+    transition: none !important;
+  }
+}

@@ -146,3 +146,16 @@ body {
   border-left: 3px solid #7FE0F6;
   color: #7FE0F6;
 }
+
+.project-item {
+  opacity: 0;
+  transform: translateX(-80px);
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

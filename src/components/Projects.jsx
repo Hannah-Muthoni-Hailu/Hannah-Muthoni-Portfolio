@@ -97,7 +97,7 @@ export default function Projects() {
             <div className="d-flex flex-direction-row flex-wrap justify-content-around mt-5 p-2">
                 {projects.map((project) => {
                     return(
-                        <div key={project.name} className="rounded projectCard p-3 pb-5 text-start mx-2 mb-4">
+                        <div key={project.name} className="project-item rounded projectCard p-3 pb-5 text-start mx-2 mb-4">
                             <h2 style={{ 'color': '#7FE0F6' }}>{project.name}</h2>
                             <p className="text-white mb-3" style={{ 'fontSize': '15px' }}>{project.shortDesc}</p>
                             <img src={project.img} alt={"Project image for " + project.name} className="projectImage" />

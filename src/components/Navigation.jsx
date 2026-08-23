@@ -12,7 +12,7 @@ export default function Navigation() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto ms-5 ps-5">
+                    <Nav className="ms-auto ps-5">
                         <Nav.Link href="#projects" className="text-white mx-3 text-nowrap">My Projects</Nav.Link>
                         <Nav.Link href="#education" className="text-white mx-3">Education</Nav.Link>
                         {/* <Nav.Link href="#skills" className="text-white mx-2">Skills</Nav.Link> */}
