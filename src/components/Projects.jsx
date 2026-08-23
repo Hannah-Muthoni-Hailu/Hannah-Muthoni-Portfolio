@@ -16,6 +16,7 @@ const projects = [
     desc: "A professional and minimalistic landing page for a dental clinic",
     tags: ["Branding", "Art Direction"],
     accent: "#c7ff32",
+    url: "https://spearmint-dental-clinic-1.onrender.com/",
   },
   {
     title: "BotSasa",
@@ -25,6 +26,7 @@ const projects = [
     image: BotSasa,
     tags: ["Web Design", "Development"],
     accent: "#8cf7ff",
+    url: "https://spearmint-dental-clinic-1.onrender.com/",
   },
   {
     title: "Mobile Muuzaji",
@@ -34,6 +36,7 @@ const projects = [
     desc: "A simple PoS terminal that can be used on mobile to track profits and sales",
     tags: ["Editorial", "Typography"],
     accent: "#ff8fba",
+    url: "https://spearmint-dental-clinic-1.onrender.com/",
   },
 ];
 
@@ -65,9 +68,14 @@ function ProjectCard({ project, index }) {
   }, []);
 
   return (
-    <article
+    <a
       ref={cardRef}
-      className={`project-card ${isVisible ? "project-card--visible" : ""}`}
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`project-card ${
+        isVisible ? "project-card--visible" : ""
+      }`}
       style={{
         "--project-accent": project.accent,
         "--animation-delay": `${index * 120}ms`,
@@ -98,7 +106,10 @@ function ProjectCard({ project, index }) {
       <div>
         <p className='project-desc mt-3 text-white-50'>{project.desc}</p>
       </div>
-    </article>
+      <span className="project-arrow" aria-hidden="true">
+        ↗
+      </span>
+    </a>
   );
 }
 
