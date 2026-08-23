@@ -10,6 +10,7 @@ import StickMan from "./components/Stickman/Stickman";
 export default function App() {
   return(
     <>
+      <div className="hero-grid" />
       <Navigation />
       <Home />
       <Projects />

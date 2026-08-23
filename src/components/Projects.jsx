@@ -1,137 +1,138 @@
-import { useState } from "react";
-import { Container, Button, Modal } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import Spearmint from '../assets/Spearmint.png';
-import TextCopier from '../assets/TextCopier.png';
+// import TextCopier from '../assets/TextCopier.png';
 import BotSasa from '../assets/BotSasa.png';
 import Mortgage from '../assets/Mortgage.png';
 import MobileMuuzaji from '../assets/MobileMuuzaji.png';
+import React, { useEffect, useRef, useState } from "react";
+import { Container, Badge } from "react-bootstrap";
+import "../styles/Projects.css";
+
+const projects = [
+  {
+    title: "Spearmint Dental Clinic",
+    category: "Landing Page",
+    year: "2026",
+    image: Spearmint,
+    desc: "A professional and minimalistic landing page for a dental clinic",
+    tags: ["Branding", "Art Direction"],
+    accent: "#c7ff32",
+  },
+  {
+    title: "BotSasa",
+    category: "Business Website",
+    year: "2026",
+    desc: "A website that allows web developers to automatically create a chatbot backend using just a text file",
+    image: BotSasa,
+    tags: ["Web Design", "Development"],
+    accent: "#8cf7ff",
+  },
+  {
+    title: "Mobile Muuzaji",
+    category: "Web App",
+    year: "2026",
+    image: MobileMuuzaji,
+    desc: "A simple PoS terminal that can be used on mobile to track profits and sales",
+    tags: ["Editorial", "Typography"],
+    accent: "#ff8fba",
+  },
+];
+
+function ProjectCard({ project, index }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = cardRef.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <article
+      ref={cardRef}
+      className={`project-card ${isVisible ? "project-card--visible" : ""}`}
+      style={{
+        "--project-accent": project.accent,
+        "--animation-delay": `${index * 120}ms`,
+      }}
+    >
+      <div className="project-image-wrap">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="project-image"
+          loading="lazy"
+        />
+
+        <div className="project-index">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+      </div>
+
+      <div className="project-info">
+        <div>
+          <p className="project-category">{project.category}</p>
+          <h3 className="project-title">{project.title}</h3>
+        </div>
+
+        <span className="project-year">{project.year}</span>
+      </div>
+
+      <div className="project-tags">
+        {project.tags.map((tag) => (
+          <Badge
+            key={tag}
+            bg="transparent"
+            className="project-tag"
+          >
+            {tag}
+          </Badge>
+        ))}
+      </div>
+    </article>
+  );
+}
 
 export default function Projects() {
-    const [modalContent, setModalContent] = useState({});
-    const [showModal, setShowModal] = useState(false);
+  return (
+    <section className="projects-section">
+      <Container fluid className="px-3 px-md-4 px-lg-5">
+        <div className="projects-header">
+          <div>
+            <p className="projects-eyebrow">Selected work</p>
+            <h2 className="projects-title">Projects</h2>
+          </div>
 
-    const projects = [
-        {
-            'img': Spearmint,
-            'name': 'Spearmint Dental Clinic',
-            'shortDesc': 'A professional and minimalistic landing page for a dental clinic',
-            'longDesc': 'I was contracted by Dr.Daisy of Spearmint Dental Clinic Nairobi to build a minimalistic landing page with appointment booking capabilites and a chatbot.',
-            'techstack': [
-                'React (Vite)',
-                'ExpressJS',
-                'Google Calendar API (For appointment booking)',
-                'HuggingFace Inference Client (To implement the chatbot built on the DistilBert model)'
-            ],
-            'github': 'https://github.com/Spearmint-Dental-Clinic/Spearmint-Dental-Clinic',
-            'url': 'https://spearmint-dental-clinic-1.onrender.com/'
-        },
-        {
-            'img': TextCopier,
-            'name': 'Text Copier',
-            'shortDesc': 'An extension that allows the user to copy text from an image to their clipboard',
-            'longDesc': 'This extensions allows users to take a screenshot of a piece of text and automatically copy it to their clipboard. It is especially useful for online students who need to copy text from video slides.',
-            'techstack': [
-                'HTML5 + CSS',
-                'JavaScript',
-                'HuggingFace Inference Client (To implement the chatbot built on Google\'s Gemma 5 model)'
-            ],
-            'github': 'https://github.com/Hannah-Muthoni-Hailu/Image-to-Text-Extension',
-        },
-        {
-            'img': BotSasa,
-            'name': 'BotSasa',
-            'shortDesc': 'A website that allows web developers to automatically create a chatbot backend using just a text file',
-            'longDesc': 'BotSasa is a website that allows web developers to quickly and easily add a chatbot to their websites. The BotSasa API is based on Google\'s DistilBert model, a SOA Question Answering model. BotSasa allows you to build a chatbot by simply providing a text document containing all the information you would like your customers to know about you, then let BotSasa handle the backend logic.',
-            'techstack': [
-                'React (Vite)',
-                'Python (FastAPI)',
-                'RESTful APIs',
-                'HuggingFace Inference Client (To implement the chatbot built on Google\'s DistillBert model)'
-            ],
-            'github': 'https://github.com/Hannah-Muthoni-Hailu/BotSasa/tree/main',
-            'url': 'https://botsasa-1.onrender.com/',
-        },
-        {
-            'img': Mortgage,
-            'name': 'LLoyd\'s Banking Group Mortgage Calculator',
-            'shortDesc': 'An intuitive mortgage calculator designed to suit both expert and new users.',
-            'longDesc': 'The LLoyd\'s Banking Group offered me an opportunity to work on improving an existing mortgage calculator as part of a job simulation through Forage. The calculator was optimized using insights drawn from user feedback, designed to be intuitive with different tracks for expert and novice users and developed with accessibility in mind. The optimization successfully improved user efficiency when caclulating mortgages determined through user studies.',
-            'techstack': [
-                'React (Vite)',
-                'Git Version Control',
-                'Figma',
-            ],
-            'github': 'https://github.com/Hannah-Muthoni-Hailu/lloyds-bank-mortgage-calculator',
-        },
-        {
-            'img': MobileMuuzaji,
-            'name': 'MobileMuuzaji - Mobile PoS system',
-            'shortDesc': 'A simple PoS terminal that can be used on mobile to track profits and sales',
-            'longDesc': 'MobileMuuzaji is a passion project I built for my mothers small business. It is designed to specifically address challenges that small entreprenuers in Kenya, like her, face. Specifically, it allows sales and profits to be logged and calculated quickly, better fitting the fast paced landscape of running a small business in the country. It also allows for employee management, ensuring data is consolidated across the organization. In addition to that, it offers an easy way to sort and group data allowing for data-driven decision making.',
-            'techstack': [
-                'Kotlin',
-                'Python (FastAPI)',
-                'Android Mobile Development',
-                'Git Version Control',
-                'Figma',
-            ],
-            'github': 'https://github.com/Hannah-Muthoni-Hailu/MobileMuuzaji',
-        },
-    ]
+          <span className="projects-count">04 — 04</span>
+        </div>
 
-    const handleOpen = (project) => {
-        setModalContent(project);
-        setShowModal(true);
-    }
-
-    const handleClose = () => {
-        setShowModal(false);
-        setModalContent({});
-    }
-
-    return(
-        <Container fluid className="my-5" id="projects">
-            <h1 className="sectionTitles">My Projects</h1>
-            <div className="d-flex flex-direction-row flex-wrap justify-content-around mt-5 p-2">
-                {projects.map((project) => {
-                    return(
-                        <div key={project.name} className="project-item rounded projectCard p-3 pb-5 text-start mx-2 mb-4">
-                            <h2 style={{ 'color': '#7FE0F6' }}>{project.name}</h2>
-                            <p className="text-white mb-3" style={{ 'fontSize': '15px' }}>{project.shortDesc}</p>
-                            <img src={project.img} alt={"Project image for " + project.name} className="projectImage" />
-                            <Button className="mb-5 projectButton" onClick={() => handleOpen(project)}>See more</Button>
-                        </div>
-                    )
-                })}
-            </div>
-            <Modal show={showModal} onHide={handleClose}>
-                <Modal.Header closeVariant="white" closeButton className="modalContent text-white">
-                    <Modal.Title>{modalContent.name}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="modalContent text-white">
-                    <img src={modalContent.img} alt={"Project image for " + modalContent.name} className="w-100 border rounded-5" />
-                    <div className="mt-4 px-1">
-                        <p className="mb-4">{modalContent.longDesc}</p>
-                        <h4>TechStack</h4>
-                        <ul className="mb-4">
-                            {modalContent.techstack?.map((stack) => {
-                                return <li key={stack}>{stack}</li>
-                            })}
-                        </ul>
-                        <Button className="mx-4 px-1 heroButton mb-2">
-                            <a href={modalContent.github} className="text-decoration-none text-white">View Github <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
-                        </Button>
-                        {modalContent.url ?
-                            <Button className="mx-4 px-1 heroButton mb-2">
-                                <a href={modalContent.url} className="text-decoration-none text-white">View Live <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
-                            </Button> : null
-                        }
-                        
-                    </div>
-                </Modal.Body>
-            </Modal>
-        </Container>
-    )
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
 }

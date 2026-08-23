@@ -1,30 +1,37 @@
-import { Container, Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
-import hero from '../assets/hero.png'
-import Me from '../assets/Me.jpg';
+// import { Container, Button } from "react-bootstrap";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+// import hero from '../assets/hero.png'
+// import Me from '../assets/Me.jpg';
+import React from "react";
+import { Container, Badge } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/Home.css";
 
 export default function Home() {
     return(
-        <Container id="home" fluid className="d-md-flex flex-row-reverse mt-md-5 mb-md-5 p-5">
-            <div className="ps-5 pt-2 d-flex justify-content-center">
-                <div className="blue-square ms-3 rounded-circle">
-                    <img src={Me} alt="Professional headshot" className="overlay-image shadow-lg rounded-circle" />
+        <section className="hero">
+            <Container className="hero-content">
+                <div className="availability-pill">
+                <span className="availability-dot" />
+                Available for select projects
                 </div>
-            </div>
-            <div className="ps-1 mt-5 pt-5 text-md-start text-center">
-                <p className="myName fs-4 m-md-0">Hi, my name is...</p>
-                <h1 className="mt-2 nameH1">Muthoni Hailu</h1>
-                <p className="text-white mb-3 pe-md-5">
-                    I am a software engineer specializing in MERN stack and Python web development. I am focused on AI integration into websites through Hugging Face inference ensuring that your business is ready for the age of Artificial Intelligence.
+
+                <h1 className="hero-title">
+                <span>Muthoni</span>
+                <span className="hero-accent">Hailu</span>
+                </h1>
+
+                <div className="hero-footer">
+                <p className="hero-kicker">
+                    Creative developer &amp; digital designer
                 </p>
-                <Button className="mx-2 px-3 heroButton mb-2">
-                    <a href="#contact" className="text-decoration-none text-white">Work with me <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
-                </Button>
-                <Button className="mx-2 px-3 heroButton mb-2">
-                    <a href="#projects" className="text-decoration-none text-white">See my work <FontAwesomeIcon icon={faArrowAltCircleRight}/></a>
-                </Button>
-            </div>
-        </Container>
+
+                <Badge bg="transparent" className="hero-scroll">
+                    SCROLL TO EXPLORE ↓
+                </Badge>
+                </div>
+            </Container>
+            </section>
     )
 }

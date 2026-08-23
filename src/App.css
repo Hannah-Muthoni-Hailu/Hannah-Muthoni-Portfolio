@@ -1,5 +1,40 @@
 body {
-  background: radial-gradient(#2b516d, #010232);
+  background: #090b08;
+  color: #fff;
+}
+
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.35) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  /* Softly fades the grid toward the edges */
+  mask-image: radial-gradient(
+    ellipse at center,
+    black 20%,
+    transparent 80%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 20%,
+    transparent 80%
+  );
 }
 
 .downloadButton {
