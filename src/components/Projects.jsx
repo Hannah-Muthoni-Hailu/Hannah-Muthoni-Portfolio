@@ -95,16 +95,8 @@ function ProjectCard({ project, index }) {
         <span className="project-year">{project.year}</span>
       </div>
 
-      <div className="project-tags">
-        {project.tags.map((tag) => (
-          <Badge
-            key={tag}
-            bg="transparent"
-            className="project-tag"
-          >
-            {tag}
-          </Badge>
-        ))}
+      <div>
+        <p className='project-desc'>{project.desc}</p>
       </div>
     </article>
   );
