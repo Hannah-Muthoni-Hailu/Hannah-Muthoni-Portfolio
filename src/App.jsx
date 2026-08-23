@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Navigation from './components/Navigation';
 import Projects from './components/Projects';
 import StickMan from "./components/Stickman/Stickman";
+import About from './components/About';
+import Marquee from './components/Marque';
 
 export default function App() {
   return(
@@ -14,7 +16,9 @@ export default function App() {
       <Navigation />
       <Home />
       <Projects />
-      <Education />
+      <About />
+      <Marquee />
+      {/* <Education /> */}
       <Contact />
       <Footer />
       <StickMan />
