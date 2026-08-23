@@ -96,7 +96,7 @@ function ProjectCard({ project, index }) {
       </div>
 
       <div>
-        <p className='project-desc'>{project.desc}</p>
+        <p className='project-desc mt-3 text-white-50'>{project.desc}</p>
       </div>
     </article>
   );
