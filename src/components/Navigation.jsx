@@ -27,7 +27,7 @@
 //     )
 // }
 import React, { useState } from "react";
-import "./Navigation.css";
+import "../styles/Navigation.css";
 
 const navItems = [
   { label: "Home", href: "#home" },
