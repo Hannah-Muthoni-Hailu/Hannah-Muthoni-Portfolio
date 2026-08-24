@@ -8,8 +8,8 @@ const INITIAL_MESSAGE =
 const CHATBOT_GREETING =
   "So, you want to improve your website? What do you specifically have in mind?";
 
-const API_URL = "https://your-api-endpoint.com/chat";
-const API_KEY = "YOUR_API_KEY";
+const API_URL = "https://botsasa-6acp.onrender.com/chatbot";
+const API_KEY = "import.meta.env.VITE_CHATBOT_KEY";
 
 export default function StickMan() {
   const {
@@ -93,32 +93,27 @@ export default function StickMan() {
     setIsSending(true);
 
     try {
-      // const response = await fetch(API_URL, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     text,
-      //     apikey: API_KEY,
-      //   }),
-      // });
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text,
+          apikey: API_KEY,
+        }),
+      });
 
-      // if (!response.ok) {
-      //   throw new Error(`API request failed: ${response.status}`);
-      // }
-
-      // const data = await response.json();
-      const data = {
-        response: "Thank you for your input"
+      if (!response.ok) {
+        throw new Error(`API request failed: ${response.status}`);
       }
+
+      const data = await response.json();
 
       // Adjust this depending on your real API response.
       const assistantText =
         data.response ||
-        data.message ||
-        data.text ||
-        "Thanks — I've received your message.";
+        "Sorry, I could not answer that right now. Please try again later";
 
       setMessages((current) => [
         ...current,
