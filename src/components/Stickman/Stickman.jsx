@@ -93,19 +93,16 @@ export default function StickMan() {
     setIsSending(true);
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch("https://botsasa-6acp.onrender.com/chatbot", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          text,
-          apikey: API_KEY,
-        }),
+         body: JSON.stringify({ text: text, apikey: import.meta.env.VITE_CHATBOT_KEY })
       });
 
       if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
+        throw new Error(`API request failed: ${response.detail}`);
       }
 
       const data = await response.json();
