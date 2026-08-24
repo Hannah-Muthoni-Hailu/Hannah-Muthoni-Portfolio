@@ -16,7 +16,7 @@ export default function App() {
       <Navigation />
 
     <section id="home">
-      <Hero />
+      <Home />
     </section>
     
     <section id="about">
