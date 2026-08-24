@@ -1,8 +1,6 @@
 import Spearmint from '../assets/Spearmint.png';
-// import TextCopier from '../assets/TextCopier.png';
 import BotSasa from '../assets/BotSasa.png';
-import Mortgage from '../assets/Mortgage.png';
-import MobileMuuzaji from '../assets/MobileMuuzaji.png';
+import ShalomTechnologies from '../assets/Shalom-Technologies.png';
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Badge } from "react-bootstrap";
 import "../styles/Projects.css";
@@ -19,24 +17,24 @@ const projects = [
     url: "https://spearmint-dental-clinic-1.onrender.com/",
   },
   {
-    title: "BotSasa",
+    title: "Shalom Technologies",
     category: "Business Website",
     year: "2026",
-    desc: "A website that allows web developers to automatically create a chatbot backend using just a text file",
+    image: ShalomTechnologies,
+    desc: "A platform for a business to showcase their business information, work, services and contact information.",
+    tags: ["Editorial", "Typography"],
+    accent: "#ff8fba",
+    url: "https://shalom-technologies.github.io/Shalom-Technologies/#/",
+  },
+  {
+    title: "BotSasa",
+    category: "Web App",
+    year: "2026",
+    desc: "A fullstack web app with a Python (FastAPI) backend and React-based frontend.",
     image: BotSasa,
     tags: ["Web Design", "Development"],
     accent: "#8cf7ff",
-    url: "https://spearmint-dental-clinic-1.onrender.com/",
-  },
-  {
-    title: "Mobile Muuzaji",
-    category: "Web App",
-    year: "2026",
-    image: MobileMuuzaji,
-    desc: "A simple PoS terminal that can be used on mobile to track profits and sales",
-    tags: ["Editorial", "Typography"],
-    accent: "#ff8fba",
-    url: "https://spearmint-dental-clinic-1.onrender.com/",
+    url: "https://botsasa-1.onrender.com/",
   },
 ];
 
