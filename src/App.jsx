@@ -14,12 +14,24 @@ export default function App() {
     <>
       <div className="hero-grid" />
       <Navigation />
-      <Home />
-      <Projects />
+
+    <section id="home">
+      <Hero />
+    </section>
+    
+    <section id="about">
       <About />
-      <Marquee />
-      {/* <Education /> */}
+    </section>
+    
+    <Marquee />
+    
+    <section id="projects">
+      <Projects />
+    </section>
+    
+    <section id="contact">
       <Contact />
+    </section>
       {/* <Footer /> */}
       <StickMan />
     </>
