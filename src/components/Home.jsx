@@ -14,7 +14,7 @@ export default function Home() {
             <Container className="hero-content">
                 <div className="availability-pill">
                 <span className="availability-dot" />
-                Available for select projects
+                Available
                 </div>
 
                 <h1 className="hero-title">
