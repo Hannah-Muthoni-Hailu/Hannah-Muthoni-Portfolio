@@ -4,7 +4,7 @@ import "../styles/Marque.css";
 const items = [
   "Open to Collaborate",
   "Let's Build Something",
-  "Available for Freelance",
+  "Available for Work",
 ];
 
 export default function Marquee() {
