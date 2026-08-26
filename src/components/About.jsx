@@ -136,11 +136,11 @@ export default function About() {
 
             <p className="about-copy about-copy-muted">
               I'm a relatively introverted girl who found my voice through coding.
-
+              <br />
               One of my most fundamental childhood memories was watching my little brother explain bash scripting to me while I stared blankly at the screen.
               He had convinced me he was hacking. I remember feeling some sort of annoyance from my younger brother knowing how to "hack" while I didn't.
               And that annoyance has turned into a lifetime of programming.
-
+              <br />
               Recently, I completed my Computer Science degree which technically means I can call myself a "scientist".
               A scientist who uses JavaScript and Python to understand the modern web and build tools that allow other people interact with it.
               I am seeking a full-time, software developer role where the programming skills I have gained can be put into use for a greater good.
