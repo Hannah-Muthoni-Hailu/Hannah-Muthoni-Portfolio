@@ -73,7 +73,7 @@ function AnimatedStat({ value, suffix, label }) {
   }, [started, value]);
 
   return (
-    <Col xs={12} md={4} className="about-stat">
+    <Col xs={12} md={6} className="about-stat">
       <div ref={statRef} className="about-stat-inner">
         <span className="about-stat-index">01</span>
 
