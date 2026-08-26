@@ -131,15 +131,19 @@ export default function About() {
           {/* Content */}
           <div className="about-content">
             <p className="about-copy">
-              I’m <span>Muthoni</span> — a multidisciplinary creative developer and
-              designer.
+              <span>Hi there 👋</span> I'm Muthoni.
             </p>
 
             <p className="about-copy about-copy-muted">
-              My main focus is converting your vision into an intuitive and responsive website
-              with AI integration and SEO optimization. I make sure that your site doesn't just
-              become another site on the web. Instead, your site will directly address your customer's
-              needs and get above your competition.
+              I'm a relatively introverted girl who found my voice through coding.
+
+              One of my most fundamental childhood memories was watching my little brother explain bash scripting to me while I stared blankly at the screen.
+              He had convinced me he was hacking. I remember feeling some sort of annoyance from my younger brother knowing how to "hack" while I didn't.
+              And that annoyance has turned into a lifetime of programming.
+
+              Recently, I completed my Computer Science degree which technically means I can call myself a "scientist".
+              A scientist who uses JavaScript and Python to understand the modern web and build tools that allow other people interact with it.
+              I am seeking a full-time, software developer role where the programming skills I have gained can be put into use for a greater good.
             </p>
 
             <div className="skills">
