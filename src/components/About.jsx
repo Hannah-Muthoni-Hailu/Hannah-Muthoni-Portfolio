@@ -131,7 +131,7 @@ export default function About() {
           {/* Content */}
           <div className="about-content">
             <p className="about-copy">
-              <span>Hi there 👋</span> I'm Muthoni.
+              <span>Hi there 👋</span> I'm Muthoni. A software developer, CS graduate and lifetime learner.
             </p>
 
             <p className="about-copy about-copy-muted">
