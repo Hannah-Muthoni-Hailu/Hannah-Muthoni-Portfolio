@@ -83,7 +83,7 @@ export default function Contact() {
 
         <footer className="contact-footer">
           <span>© 2026 Hannah Muthoni</span>
-          <span>Designed &amp; developed with intention.</span>
+          <span>Designed &amp; developed by me.</span>
         </footer>
       </Container>
     </section>
