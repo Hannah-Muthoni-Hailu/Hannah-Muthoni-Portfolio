@@ -17,8 +17,7 @@ const skills = [
 
 const stats = [
   { value: 2, suffix: "+", label: "Years creating" },
-  { value: 8, suffix: "", label: "Projects shipped" },
-  { value: 5, suffix: "", label: "Happy clients" },
+  { value: 3, suffix: "", label: "Projects shipped" },
 ];
 
 function AnimatedStat({ value, suffix, label }) {
