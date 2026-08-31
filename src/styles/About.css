@@ -192,6 +192,7 @@
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.035em;
+  font-size: clamp(1rem, 2vw, 1.8rem);
 }
 
 .about-copy span{
